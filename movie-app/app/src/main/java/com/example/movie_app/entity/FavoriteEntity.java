@@ -6,9 +6,9 @@ import androidx.room.PrimaryKey;
 
 @Entity(tableName = "favorites")
 public class FavoriteEntity {
+
     @PrimaryKey(autoGenerate = true)
     public int id;
-
     @NonNull
     public String userId;
 
