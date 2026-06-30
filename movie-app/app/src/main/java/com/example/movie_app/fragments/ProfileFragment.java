@@ -17,6 +17,7 @@ import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
 import com.example.movie_app.R;
+import com.example.movie_app.activities.HistoryActivity;
 import com.example.movie_app.activities.LoginActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -101,9 +102,10 @@ public class ProfileFragment extends Fragment {
         if (btnManageSoftware != null) {
             btnManageSoftware.setOnClickListener(v -> Toast.makeText(getContext(), "Mở mục Quản lý phần mềm (Admin)", Toast.LENGTH_SHORT).show());
         }
-        if (btnFavoriteMovies != null) {
-            btnFavoriteMovies.setOnClickListener(v -> Toast.makeText(getContext(), "Mở Danh sách của tôi", Toast.LENGTH_SHORT).show());
-        }
+        btnFavoriteMovies.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), HistoryActivity.class);
+            startActivity(intent);
+        });
         btnNotificationSettings.setOnClickListener(v -> {
             SettingsFragment settingsFragment = new SettingsFragment();
 

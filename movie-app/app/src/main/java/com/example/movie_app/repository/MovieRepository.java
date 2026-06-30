@@ -23,6 +23,7 @@ import java.util.concurrent.Executors;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
+import androidx.lifecycle.Transformations;
 
 public class MovieRepository {
     private final ApiService apiService;
@@ -219,7 +220,7 @@ public class MovieRepository {
     public LiveData<List<MovieItem>> getSeriesMovies(int page) { return handleV1Response(apiService.getSeriesMovies(page)); }
     public LiveData<List<MovieItem>> getSingleMovies(int page) { return handleV1Response(apiService.getSingleMovies(page)); }
     public LiveData<Boolean> isFavorite(String userId, String movieId) {
-        return favoriteDao.isFavorite(userId, movieId);
+        return Transformations.map(favoriteDao.isFavorite(userId, movieId), entity -> entity != null);
     }
 
     public void addFavorite(FavoriteEntity favorite) {
